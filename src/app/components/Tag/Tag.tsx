@@ -6,6 +6,7 @@ const Tag = styled.span`
   border-radius: 1em;
   color: white;
   margin-right: 10px;
+  white-space: nowrap;
 `;
 
 export default Tag;

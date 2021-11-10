@@ -26,11 +26,13 @@ export default function Card({ content }: CardProps): JSX.Element {
 
 const CardBody = styled.article`
   padding: 1.5em;
-  border: 5px solid #c92a2a;
+  border: 2px solid #c92a2a;
   border-radius: 0.5em;
+  box-shadow: 3px 3.6px 5.4px rgba(0, 0, 0, 0.02),
+    9.9px 11.8px 18.2px rgba(0, 0, 0, 0.03), 61px 73px 81px rgba(0, 0, 0, 0.05);
 `;
 
-const CardHeading = styled.h2`
+const CardHeading = styled.h1`
   color: #c92a2a;
 `;
 

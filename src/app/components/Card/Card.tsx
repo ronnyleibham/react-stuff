@@ -6,7 +6,7 @@ type CardProps = {
   content: {
     name: string;
     description: string;
-    categories: string[];
+    categories?: string[];
   };
 };
 
@@ -14,10 +14,12 @@ export default function Card({ content }: CardProps): JSX.Element {
   return (
     <CardBody>
       <CardHeading>{content.name}</CardHeading>
-      <p>{content.description}</p>
-      {content.categories.map((category) => (
-        <Tag>{category}</Tag>
-      ))}
+      <CardDescription>{content.description}</CardDescription>
+      <TagContainer>
+        {content.categories?.map((category) => (
+          <Tag>{category}</Tag>
+        ))}
+      </TagContainer>
     </CardBody>
   );
 }
@@ -30,4 +32,13 @@ const CardBody = styled.article`
 
 const CardHeading = styled.h2`
   color: #c92a2a;
+`;
+
+const CardDescription = styled.p`
+  margin-bottom: 40px;
+`;
+
+const TagContainer = styled.div`
+  overflow-x: scroll;
+  display: flex;
 `;

@@ -6,5 +6,5 @@ export default {
   component: Button,
 };
 
-export const Login = (): JSX.Element => <Button>Login</Button>;
+export const Login = (): JSX.Element => <Button>Einloggen</Button>;
 export const Register = (): JSX.Element => <Button>Register</Button>;

@@ -1,17 +1,33 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 import styled from 'styled-components';
+import Button from '../Button/Button';
+import Tag from '../Tag/Tag';
 
 type CardProps = {
   id?: number;
   name: string;
   description: string;
+  categories?: string[];
 };
 
-export default function Card({ name, description }: CardProps): JSX.Element {
+export default function Card({
+  name,
+  description,
+  categories,
+}: CardProps): JSX.Element {
+  const navigate = useNavigate();
   return (
     <CardBody>
+      <ButtonDiv onClick={() => navigate(-1)}>
+        <Button>Back</Button>
+      </ButtonDiv>
       <CardHeading>{name}</CardHeading>
       <CardDescription>{description}</CardDescription>
+      <TagContainer>
+        {categories &&
+          categories.map((category) => <Tag key={category}>{category}</Tag>)}
+      </TagContainer>
     </CardBody>
   );
 }
@@ -26,10 +42,19 @@ const CardBody = styled.article`
   margin: 15px 30px;
 `;
 
+const ButtonDiv = styled.div`
+  text-align: right;
+`;
+
 const CardHeading = styled.h1`
   color: #c92a2a;
 `;
 
 const CardDescription = styled.p`
   margin-bottom: 40px;
+`;
+
+const TagContainer = styled.div`
+  overflow-x: scroll;
+  display: flex;
 `;

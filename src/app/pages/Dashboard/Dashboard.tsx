@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Card from '../../components/Card/Card';
 import type { Thing } from '../../types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export default function Dashboard(): JSX.Element {
   const [things, setThings] = useState<Thing[] | null>(null);
@@ -20,12 +21,13 @@ export default function Dashboard(): JSX.Element {
       <SiteTitle>Dashboard</SiteTitle>
       {things &&
         things.map((thing) => (
-          <Card
-            key={thing.id}
-            name={thing.name}
-            description={thing.description}
-            categories={thing.categories}
-          />
+          <LinkStyle to={`/stuff/${thing.id}`}>
+            <Card
+              key={thing.id}
+              name={thing.name}
+              description={thing.description}
+            />
+          </LinkStyle>
         ))}
     </main>
   );
@@ -40,4 +42,11 @@ const SiteTitle = styled.h1`
   padding: 5px 25px;
   border-radius: 10px;
   border: 2px solid #c92a2a;
+`;
+
+const LinkStyle = styled(Link)`
+  text-decoration: none;
+  :visited {
+    color: inherit;
+  }
 `;

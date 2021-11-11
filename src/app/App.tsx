@@ -8,8 +8,8 @@ function App(): JSX.Element {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/stuff" element={<Dashboard />}>
-          <Route path=":userID" element={<Stuff />} />
+        <Route path="/stuff" element={<Stuff />}>
+          <Route path=":thingID" element={<Stuff />} />
         </Route>
       </Routes>
     </BrowserRouter>

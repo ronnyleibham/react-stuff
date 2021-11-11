@@ -13,11 +13,15 @@ function Button({ children }: ButtonProps): JSX.Element {
 export default Button;
 
 const StyledButton = styled.button`
-  color: #000;
-  background: linear-gradient(180deg, #ffbb3b, #ffa90a);
+  color: white;
+  display: inline-block;
+  background-color: #bf8f78;
   font-size: 0.8em;
-  padding: 0.8em 2em;
-  border: none;
-  border-radius: 0.4em;
+  padding: 5px 30px;
+  border: 2px solid #c92a2a;
+  border-radius: 10px;
   text-transform: uppercase;
+  :hover {
+    background-color: #fa5252;
+  }
 `;

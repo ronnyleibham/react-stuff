@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 import Button from '../Button/Button';
 import Tag from '../Tag/Tag';
@@ -15,9 +16,10 @@ export default function Card({
   description,
   categories,
 }: CardProps): JSX.Element {
+  const navigate = useNavigate();
   return (
     <CardBody>
-      <ButtonDiv>
+      <ButtonDiv onClick={() => navigate(-1)}>
         <Button>Back</Button>
       </ButtonDiv>
       <CardHeading>{name}</CardHeading>

@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from '../../components/Card/Card';
-// import type { Thing } from '../../types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';

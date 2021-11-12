@@ -1,32 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Card from '../../components/Card/Card';
-import type { Thing } from '../../types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import useFetch from '../../hooks/useFetch';
+import type { Thing } from '../../types';
 
 export default function Dashboard(): JSX.Element {
-  const [things, setThings] = useState<Thing[] | null>(null);
-
-  useEffect(() => {
-    async function fetchThings() {
-      const response = await fetch('https://json-server.neuefische.de/stuff');
-      const fetchedThings = await response.json();
-      setThings(fetchedThings);
-    }
-    fetchThings();
-  }, []);
+  const things = useFetch<Thing[]>('https://json-server.neuefische.de/stuff');
 
   return (
     <main>
       <SiteTitle>Dashboard</SiteTitle>
       {things &&
         things.map((thing) => (
-          <LinkStyle to={`/stuff/${thing.id}`}>
-            <Card
-              key={thing.id}
-              name={thing.name}
-              description={thing.description}
-            />
+          <LinkStyle key={thing.id} to={`/stuff/${thing.id}`}>
+            <Card name={thing.name} description={thing.description} />
           </LinkStyle>
         ))}
     </main>
